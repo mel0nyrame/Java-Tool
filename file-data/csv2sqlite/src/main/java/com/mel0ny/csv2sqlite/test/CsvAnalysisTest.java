@@ -3,10 +3,7 @@ package com.mel0ny.csv2sqlite.test;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
 
 /**
@@ -33,9 +30,7 @@ public class CsvAnalysisTest {
                 insert(headers);
             }
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
+        } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
         }
 

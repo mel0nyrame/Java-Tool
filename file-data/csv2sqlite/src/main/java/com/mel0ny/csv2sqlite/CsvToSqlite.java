@@ -1,12 +1,15 @@
 package com.mel0ny.csv2sqlite;
 
-import com.mel0ny.csv2sqlite.utils.JDBCUtil;
-
-import java.io.*;
-import java.sql.Connection;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.mel0ny.csv2sqlite.utils.JDBCUtil;
 
 /**
  * @Author Mel0ny
@@ -18,7 +21,6 @@ public class CsvToSqlite {
 
     private static final String VERSION = "0.0.1";
     private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    private static Connection connection;
 
     public static void main(String[] args) throws IOException, SQLException {
         if (args.length == 0) {
@@ -32,19 +34,17 @@ public class CsvToSqlite {
         for (String arg : args) {
             if (arg.startsWith("-")) {
                 switch (arg) {
-                    case "-h":
+                    case "-h" -> {
                         bw.write(getHelp());
                         bw.newLine();
                         bw.flush();
-                        break;
-                    case "-v":
+                    }
+                    case "-v" -> {
                         bw.write(VERSION);
                         bw.newLine();
                         bw.flush();
-                        break;
-                    case "-w":
-                        JDBCUtil.checkConnection();
-                        break;
+                    }
+                    case "-w" -> JDBCUtil.checkConnection();
                 }
             } else {
                 paths.add(arg);
