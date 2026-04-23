@@ -15,7 +15,11 @@
 # Porject Files #
 *.iml
 out
+target
 
 # Java #
 *.class
 *.jar
+
+# MacOS #
+.DS_Store
